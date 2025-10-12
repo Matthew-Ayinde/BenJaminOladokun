@@ -38,7 +38,7 @@ const AchievementsSection = () => {
   ];
 
   return (
-    <section id="achievements" className="py-32 bg-zinc-900">
+    <section id="achievements" className="py-32 bg-gradient-to-b from-zinc-900 via-black to-zinc-900">
       <div className="max-w-7xl mx-auto px-8 lg:px-16">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -64,10 +64,10 @@ const AchievementsSection = () => {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: index * 0.2 }}
               viewport={{ once: true }}
-              className="space-y-8"
+              className="space-y-8 p-8 rounded-2xl bg-gradient-to-br from-emerald-600/5 to-transparent border border-emerald-600/10 hover:border-emerald-600/30 transition-all duration-300"
             >
               <div className="space-y-4">
-                <div className="w-16 h-px bg-emerald-600"></div>
+                <div className="w-16 h-1 bg-gradient-to-r from-emerald-600 to-emerald-400 rounded-full"></div>
                 <h3 className="text-2xl font-light text-white">
                   {category.category}
                 </h3>

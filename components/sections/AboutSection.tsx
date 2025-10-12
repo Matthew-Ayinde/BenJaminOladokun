@@ -7,7 +7,7 @@ import images from '@/public/images';
 
 const AboutSection = () => {
   return (
-    <section id="about" className="py-32 bg-zinc-900">
+    <section id="about" className="py-32 bg-gradient-to-b from-black via-zinc-900 to-black">
       <div className="max-w-7xl mx-auto px-8 lg:px-16">
         <div className="grid lg:grid-cols-12 gap-16 items-start">
           {/* Left Content */}
@@ -88,12 +88,12 @@ const AboutSection = () => {
               viewport={{ once: true }}
               className="relative"
             >
-              <div className="relative h-[600px] w-full">
+              <div className="relative h-[600px] w-full rounded-3xl overflow-hidden shadow-2xl shadow-emerald-600/10">
                 <Image
                   src={images.portrait2}
                   alt="Benjamen Oladokun"
                   fill
-                  className="object-cover grayscale hover:grayscale-0 transition-all duration-700"
+                  className="object-cover grayscale hover:grayscale-0 hover:scale-105 transition-all duration-700"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent" />
               </div>
@@ -104,7 +104,7 @@ const AboutSection = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: 0.6 }}
                 viewport={{ once: true }}
-                className="absolute -bottom-8 -left-8 bg-emerald-600 text-white p-8 max-w-sm"
+                className="absolute -bottom-8 -left-8 bg-emerald-600 text-white p-8 max-w-sm rounded-2xl shadow-2xl"
               >
                 <div className="text-lg font-medium leading-tight">
                   "At my core, I am driven by clarity, purpose, and legacy."

@@ -27,7 +27,7 @@ const Footer = () => {
                 <a
                   key={social.label}
                   href={social.href}
-                  className="w-12 h-12 border border-white/20 flex items-center justify-center hover:border-emerald-600 hover:text-emerald-600 transition-all duration-300 group"
+                  className="w-12 h-12 border border-white/20 flex items-center justify-center rounded-full hover:border-emerald-600 hover:text-emerald-600 hover:bg-emerald-600/10 transition-all duration-300 group"
                 >
                   <social.icon className="w-5 h-5 group-hover:scale-110 transition-transform" />
                 </a>

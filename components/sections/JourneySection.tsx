@@ -34,7 +34,7 @@ const JourneySection = () => {
   ];
 
   return (
-    <section id="journey" className="py-32 bg-black">
+    <section id="journey" className="py-32 bg-gradient-to-b from-zinc-900 via-black to-zinc-900">
       <div className="max-w-7xl mx-auto px-8 lg:px-16">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -88,12 +88,12 @@ const JourneySection = () => {
 
               {/* Image */}
               <div className={`relative ${index % 2 === 1 ? 'lg:col-start-1' : ''}`}>
-                <div className="relative h-80 lg:h-96 w-full overflow-hidden">
+                <div className="relative h-80 lg:h-96 w-full overflow-hidden rounded-3xl shadow-2xl shadow-emerald-600/10">
                   <Image
                     src={step.image}
                     alt={step.title}
                     fill
-                    className="object-cover grayscale hover:grayscale-0 transition-all duration-700"
+                    className="object-cover grayscale hover:grayscale-0 hover:scale-105 transition-all duration-700"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
                 </div>

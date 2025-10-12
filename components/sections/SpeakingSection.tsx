@@ -50,7 +50,7 @@ const SpeakingSection = () => {
   ];
 
   return (
-    <section id="speaking" className="py-32 bg-black">
+    <section id="speaking" className="py-32 bg-gradient-to-b from-black via-zinc-950 to-black">
       <div className="max-w-7xl mx-auto px-8 lg:px-16">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -92,7 +92,7 @@ const SpeakingSection = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: index * 0.1 }}
                 viewport={{ once: true }}
-                className="group border border-white/10 p-6 hover:border-emerald-600/50 transition-all duration-300"
+                className="group border border-white/10 p-6 rounded-xl hover:border-emerald-600/50 hover:bg-white/5 transition-all duration-300"
               >
                 <div className="flex items-center space-x-3">
                   <div className="w-2 h-2 bg-emerald-600 rounded-full group-hover:scale-125 transition-transform"></div>
@@ -127,12 +127,12 @@ const SpeakingSection = () => {
                 viewport={{ once: true }}
                 className="group"
               >
-                <div className="relative h-64 mb-6 overflow-hidden">
+                <div className="relative h-64 mb-6 overflow-hidden rounded-2xl shadow-xl shadow-emerald-600/10">
                   <Image
                     src={event.image}
                     alt={event.name}
                     fill
-                    className="object-cover grayscale group-hover:grayscale-0 transition-all duration-700"
+                    className="object-cover grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-700"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent" />
                 </div>

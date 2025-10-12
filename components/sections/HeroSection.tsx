@@ -48,7 +48,7 @@ const HeroSection = () => {
             >
               <button
                 onClick={() => document.getElementById("about")?.scrollIntoView({ behavior: "smooth" })}
-                className="group flex items-center justify-center space-x-3 bg-emerald-600 text-white px-16 py-8 mx-4 my-6 font-medium tracking-wide uppercase hover:bg-emerald-500 transition-all duration-300 min-w-[250px]"
+                className="group flex items-center justify-center space-x-3 bg-gradient-to-r from-emerald-600 to-emerald-500 text-white px-16 py-8 mx-4 my-6 font-medium tracking-wide uppercase hover:from-emerald-500 hover:to-emerald-400 transition-all duration-300 min-w-[250px] rounded-full shadow-lg shadow-emerald-600/30 hover:shadow-xl hover:shadow-emerald-600/40"
               >
                 <span>Explore Journey</span>
                 <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
@@ -56,7 +56,7 @@ const HeroSection = () => {
 
               <button
                 onClick={() => document.getElementById("speaking")?.scrollIntoView({ behavior: "smooth" })}
-                className="group flex items-center justify-center space-x-3 border border-white/30 text-white px-10 py-5 font-medium tracking-wide uppercase hover:bg-white/10 transition-all duration-300 min-w-[200px]"
+                className="group flex items-center justify-center space-x-3 border-2 border-emerald-600/50 text-white px-10 py-5 font-medium tracking-wide uppercase hover:bg-emerald-600/10 hover:border-emerald-600 transition-all duration-300 min-w-[200px] rounded-full"
               >
                 <span>Speaking</span>
                 <ExternalLink className="w-5 h-5 group-hover:scale-110 transition-transform" />
@@ -82,7 +82,7 @@ const HeroSection = () => {
                   <a
                     key={social.label}
                     href={social.href}
-                    className="w-10 h-10 border border-white/20 flex items-center justify-center rounded-md hover:border-emerald-600 hover:text-emerald-600 transition-all duration-300 group"
+                    className="w-10 h-10 border border-white/20 flex items-center justify-center rounded-full hover:border-emerald-600 hover:text-emerald-600 hover:bg-emerald-600/10 transition-all duration-300 group"
                   >
                     <social.icon className="w-4 h-4 group-hover:scale-110 transition-transform" />
                   </a>
@@ -99,12 +99,12 @@ const HeroSection = () => {
             className="relative hidden lg:flex flex-col space-y-8"
           >
             {/* Portrait Image */}
-            <div className="relative w-full aspect-[3/4] rounded-lg overflow-hidden border border-emerald-600/20">
+            <div className="relative w-full aspect-[3/4] rounded-3xl overflow-hidden border border-emerald-600/20 shadow-2xl shadow-emerald-600/10">
               <Image
                 src={images.portrait || "/placeholder.svg"}
                 alt="Benjamen Oladokun"
                 fill
-                className="object-cover object-center"
+                className="object-cover object-center hover:scale-105 transition-transform duration-700"
                 priority
                 quality={95}
               />

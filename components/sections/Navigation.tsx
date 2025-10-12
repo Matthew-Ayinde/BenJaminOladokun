@@ -50,7 +50,7 @@ const Navigation = () => {
       initial={{ y: -100, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
       transition={{ duration: 0.8 }}
-      className="fixed top-0 left-0 lg:px-16 right-0 z-50 bg-black/80 backdrop-blur-xl border-b border-white/10"
+      className="fixed top-0 left-0 lg:px-16 right-0 z-50 bg-black/90 backdrop-blur-2xl border-b border-emerald-600/10 shadow-lg shadow-emerald-600/5"
     >
       <div className="">
         <div className="flex items-center justify-between w-full h-20">
