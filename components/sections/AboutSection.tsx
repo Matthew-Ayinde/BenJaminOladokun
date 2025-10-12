@@ -93,7 +93,8 @@ const AboutSection = () => {
                   src={images.portrait2}
                   alt="Benjamen Oladokun"
                   fill
-                  className="object-cover grayscale hover:grayscale-0 hover:scale-105 transition-all duration-700"
+                  className="object-cover hover:scale-105 transition-all duration-700"
+                  // className="object-cover grayscale hover:grayscale-0 hover:scale-105 transition-all duration-700"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent" />
               </div>

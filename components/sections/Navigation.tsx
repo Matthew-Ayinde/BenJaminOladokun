@@ -14,6 +14,7 @@ const Navigation = () => {
     { id: 'journey', label: 'Journey' },
     { id: 'achievements', label: 'Achievements' },
     { id: 'speaking', label: 'Speaking' },
+    { id: 'contact', label: 'Contact' },
   ];
 
   useEffect(() => {

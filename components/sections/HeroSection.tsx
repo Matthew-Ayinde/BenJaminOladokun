@@ -3,8 +3,41 @@ import { motion } from "framer-motion"
 import { ArrowRight, ExternalLink, Globe, Mail, ChevronDown } from "lucide-react"
 import Image from "next/image"
 import images from "@/public/images"
+import { useState, useEffect } from "react"
 
 const HeroSection = () => {
+  const [typedText, setTypedText] = useState("")
+  const [isDeleting, setIsDeleting] = useState(false)
+  const [showCursor, setShowCursor] = useState(true)
+  const fullText = "Africa,"
+
+  useEffect(() => {
+    const typingSpeed = isDeleting ? 75 : 120
+    const pauseTime = 2500
+
+    const timer = setTimeout(() => {
+      if (!isDeleting && typedText === fullText) {
+        setTimeout(() => setIsDeleting(true), pauseTime)
+      } else if (isDeleting && typedText === "") {
+        setIsDeleting(false)
+      } else if (isDeleting) {
+        setTypedText(fullText.substring(0, typedText.length - 1))
+      } else {
+        setTypedText(fullText.substring(0, typedText.length + 1))
+      }
+    }, typingSpeed)
+
+    return () => clearTimeout(timer)
+  }, [typedText, isDeleting, fullText])
+
+  useEffect(() => {
+    const cursorInterval = setInterval(() => {
+      setShowCursor((prev) => !prev)
+    }, 530)
+
+    return () => clearInterval(cursorInterval)
+  }, [])
+
   return (
     <section id="hero" className="relative min-h-screen bg-black flex items-center overflow-hidden pt-32 lg:pt-20">
       <div className="w-full px-6 sm:px-10 py-20">
@@ -21,9 +54,15 @@ const HeroSection = () => {
                 Entrepreneur • Builder • Visionary
               </p>
 
-              <h1 className="text-white font-light leading-[0.95] tracking-tight text-5xl sm:text-6xl lg:text-7xl xl:text-8xl">
+              <h1 className="text-white font-light leading-[0.95] tracking-tight text-5xl sm:text-6xl lg:text-7xl xl:text-7xl">
                 <span className="block">Innovating</span>
-                <span className="block text-emerald-600">Africa,</span>
+                <span className="block text-emerald-600 flex items-baseline">
+                  <span>{typedText}</span>
+                  <span
+                    className={`inline-block w-[3px] h-[0.85em] bg-emerald-600 ml-[2px] transition-opacity duration-100 ${showCursor ? 'opacity-100' : 'opacity-0'}`}
+                    style={{ transform: 'translateY(0.1em)' }}
+                  ></span>
+                </span>
                 <span className="block">Shaping the</span>
                 <span className="block">Future.</span>
               </h1>
@@ -44,11 +83,11 @@ const HeroSection = () => {
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.6 }}
-              className="flex flex-col sm:flex-row gap-6 pt-8"
+              className="flex flex-col sm:flex-row gap-6 pt-3"
             >
               <button
                 onClick={() => document.getElementById("about")?.scrollIntoView({ behavior: "smooth" })}
-                className="group flex items-center justify-center space-x-3 bg-gradient-to-r from-emerald-600 to-emerald-500 text-white px-16 py-8 mx-4 my-6 font-medium tracking-wide uppercase hover:from-emerald-500 hover:to-emerald-400 transition-all duration-300 min-w-[250px] rounded-full shadow-lg shadow-emerald-600/30 hover:shadow-xl hover:shadow-emerald-600/40"
+                className="group flex items-center justify-center space-x-3 bg-gradient-to-r from-emerald-600 to-emerald-500 text-white px-16 py-5 mx-4 my-6 font-medium tracking-wide uppercase hover:from-emerald-500 hover:to-emerald-400 transition-all duration-300 min-w-[250px] rounded-full shadow-lg shadow-emerald-600/30 hover:shadow-xl hover:shadow-emerald-600/40"
               >
                 <span>Explore Journey</span>
                 <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
@@ -56,7 +95,7 @@ const HeroSection = () => {
 
               <button
                 onClick={() => document.getElementById("speaking")?.scrollIntoView({ behavior: "smooth" })}
-                className="group flex items-center justify-center space-x-3 border-2 border-emerald-600/50 text-white px-10 py-5 font-medium tracking-wide uppercase hover:bg-emerald-600/10 hover:border-emerald-600 transition-all duration-300 min-w-[200px] rounded-full"
+                className="group flex items-center justify-center space-x-3 border-2 border-emerald-600/50 text-white px-10 py-1 font-medium tracking-wide uppercase hover:bg-emerald-600/10 hover:border-emerald-600 transition-all duration-300 rounded-full"
               >
                 <span>Speaking</span>
                 <ExternalLink className="w-5 h-5 group-hover:scale-110 transition-transform" />

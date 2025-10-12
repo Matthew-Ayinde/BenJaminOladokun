@@ -8,6 +8,7 @@ import AboutSection from '@/components/sections/AboutSection';
 import JourneySection from '@/components/sections/JourneySection';
 import AchievementsSection from '@/components/sections/AchievementsSection';
 import SpeakingSection from '@/components/sections/SpeakingSection';
+import ContactSection from '@/components/sections/ContactSection';
 import Footer from '@/components/sections/Footer';
 
 // Main Luxury Homepage Component
@@ -22,6 +23,7 @@ const Homepage = () => {
       <JourneySection />
       <AchievementsSection />
       <SpeakingSection />
+      <ContactSection />
       <Footer />
     </div>
   );
