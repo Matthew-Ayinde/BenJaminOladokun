@@ -1,6 +1,8 @@
 "use client"
 import { motion } from "framer-motion"
-import { Mail, Linkedin, Twitter, Send, MapPin, Phone } from "lucide-react"
+import type React from "react"
+
+import { Mail, Linkedin, Twitter, Send, MapPin, Phone, CheckCircle, AlertCircle } from "lucide-react"
 import { useState } from "react"
 
 const ContactSection = () => {
@@ -11,10 +13,38 @@ const ContactSection = () => {
     message: "",
   })
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle")
+  const [errorMessage, setErrorMessage] = useState("")
+
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
-    // Handle form submission
-    console.log("Form submitted:", formData)
+    setStatus("loading")
+    setErrorMessage("")
+
+    try {
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      })
+
+      const data = await response.json()
+
+      if (!response.ok) {
+        throw new Error(data.error || "Failed to send message")
+      }
+
+      setStatus("success")
+      setFormData({ name: "", email: "", subject: "", message: "" })
+
+      // Reset success message after 5 seconds
+      setTimeout(() => setStatus("idle"), 5000)
+    } catch (error) {
+      setStatus("error")
+      setErrorMessage(error instanceof Error ? error.message : "Failed to send message")
+    }
   }
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
@@ -40,13 +70,16 @@ const ContactSection = () => {
     {
       name: "Email",
       icon: Mail,
-      href: "mailto:",
+      href: "mailto:iambenoladokun@gmail.com",
       color: "hover:text-emerald-400 hover:border-emerald-400",
     },
   ]
 
   return (
-    <section id="contact" className="py-32 bg-gradient-to-b from-black via-zinc-950 to-zinc-900 relative overflow-hidden">
+    <section
+      id="contact"
+      className="py-32 bg-gradient-to-b from-black via-zinc-950 to-zinc-900 relative overflow-hidden"
+    >
       {/* Background decoration */}
       <div className="absolute inset-0 opacity-10">
         <div className="absolute top-20 left-10 w-72 h-72 bg-emerald-600 rounded-full blur-[120px]"></div>
@@ -61,16 +94,13 @@ const ContactSection = () => {
           viewport={{ once: true }}
           className="text-center mb-20"
         >
-          <div className="text-emerald-600 text-sm font-light tracking-[0.3em] uppercase mb-6">
-            Get In Touch
-          </div>
+          <div className="text-emerald-600 text-sm font-light tracking-[0.3em] uppercase mb-6">Get In Touch</div>
           <h2 className="text-4xl lg:text-6xl font-light text-white mb-8">
             Let's Build
             <span className="block text-emerald-600">Something Great</span>
           </h2>
           <p className="text-xl text-white/80 font-light max-w-3xl mx-auto leading-relaxed">
-            Whether you're looking for a speaker, advisor, or partner in your next venture,
-            I'd love to hear from you.
+            Whether you're looking for a speaker, advisor, or partner in your next venture, I'd love to hear from you.
           </p>
         </motion.div>
 
@@ -85,12 +115,12 @@ const ContactSection = () => {
           >
             <div className="space-y-6">
               <h3 className="text-2xl font-light text-white mb-6">Connect With Me</h3>
-              
+
               <div className="space-y-4">
                 <div className="flex items-start space-x-4 text-white/70">
                   <MapPin className="w-5 h-5 text-emerald-600 mt-1 flex-shrink-0" />
                   <div>
-                    <p className="font-light">Lagos, Nigeria</p>
+                    <p className="font-light">United States</p>
                     <p className="text-sm text-white/50">Available globally</p>
                   </div>
                 </div>
@@ -98,7 +128,7 @@ const ContactSection = () => {
                 <div className="flex items-start space-x-4 text-white/70">
                   <Mail className="w-5 h-5 text-emerald-600 mt-1 flex-shrink-0" />
                   <div>
-                    <p className="font-light">hello@benjamenoladokun.com</p>
+                    <p className="font-light">iambenoladokun@gmail.com</p>
                     <p className="text-sm text-white/50">Response within 24 hours</p>
                   </div>
                 </div>
@@ -132,8 +162,8 @@ const ContactSection = () => {
             {/* Quote */}
             <div className="p-6 rounded-2xl bg-gradient-to-br from-emerald-600/10 to-transparent border border-emerald-600/20">
               <p className="text-white/80 font-light italic leading-relaxed">
-                "I'm always excited to connect with fellow entrepreneurs, innovators, and those
-                passionate about building impactful ventures."
+                "I'm always excited to connect with fellow entrepreneurs, innovators, and those passionate about
+                building impactful ventures."
               </p>
             </div>
           </motion.div>
@@ -159,7 +189,8 @@ const ContactSection = () => {
                     value={formData.name}
                     onChange={handleChange}
                     required
-                    className="w-full px-6 py-4 bg-white/5 border border-white/10 rounded-xl text-white placeholder-white/40 focus:outline-none focus:border-emerald-600 focus:bg-white/10 transition-all duration-300"
+                    disabled={status === "loading"}
+                    className="w-full px-6 py-4 bg-white/5 border border-white/10 rounded-xl text-white placeholder-white/40 focus:outline-none focus:border-emerald-600 focus:bg-white/10 transition-all duration-300 disabled:opacity-50"
                     placeholder="John Doe"
                   />
                 </div>
@@ -175,7 +206,8 @@ const ContactSection = () => {
                     value={formData.email}
                     onChange={handleChange}
                     required
-                    className="w-full px-6 py-4 bg-white/5 border border-white/10 rounded-xl text-white placeholder-white/40 focus:outline-none focus:border-emerald-600 focus:bg-white/10 transition-all duration-300"
+                    disabled={status === "loading"}
+                    className="w-full px-6 py-4 bg-white/5 border border-white/10 rounded-xl text-white placeholder-white/40 focus:outline-none focus:border-emerald-600 focus:bg-white/10 transition-all duration-300 disabled:opacity-50"
                     placeholder="john@example.com"
                   />
                 </div>
@@ -192,7 +224,8 @@ const ContactSection = () => {
                   value={formData.subject}
                   onChange={handleChange}
                   required
-                  className="w-full px-6 py-4 bg-white/5 border border-white/10 rounded-xl text-white placeholder-white/40 focus:outline-none focus:border-emerald-600 focus:bg-white/10 transition-all duration-300"
+                  disabled={status === "loading"}
+                  className="w-full px-6 py-4 bg-white/5 border border-white/10 rounded-xl text-white placeholder-white/40 focus:outline-none focus:border-emerald-600 focus:bg-white/10 transition-all duration-300 disabled:opacity-50"
                   placeholder="Speaking Engagement / Partnership / Consultation"
                 />
               </div>
@@ -207,19 +240,43 @@ const ContactSection = () => {
                   value={formData.message}
                   onChange={handleChange}
                   required
+                  disabled={status === "loading"}
                   rows={6}
-                  className="w-full px-6 py-4 bg-white/5 border border-white/10 rounded-xl text-white placeholder-white/40 focus:outline-none focus:border-emerald-600 focus:bg-white/10 transition-all duration-300 resize-none"
+                  className="w-full px-6 py-4 bg-white/5 border border-white/10 rounded-xl text-white placeholder-white/40 focus:outline-none focus:border-emerald-600 focus:bg-white/10 transition-all duration-300 resize-none disabled:opacity-50"
                   placeholder="Tell me about your project or inquiry..."
                 />
               </div>
 
+              {status === "success" && (
+                <motion.div
+                  initial={{ opacity: 0, y: -10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  className="flex items-center space-x-3 p-4 bg-emerald-600/20 border border-emerald-600/40 rounded-xl text-emerald-400"
+                >
+                  <CheckCircle className="w-5 h-5 flex-shrink-0" />
+                  <p className="text-sm font-light">Message sent successfully! I'll get back to you soon.</p>
+                </motion.div>
+              )}
+
+              {status === "error" && (
+                <motion.div
+                  initial={{ opacity: 0, y: -10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  className="flex items-center space-x-3 p-4 bg-red-600/20 border border-red-600/40 rounded-xl text-red-400"
+                >
+                  <AlertCircle className="w-5 h-5 flex-shrink-0" />
+                  <p className="text-sm font-light">{errorMessage}</p>
+                </motion.div>
+              )}
+
               <motion.button
                 type="submit"
-                whileHover={{ scale: 1.02 }}
-                whileTap={{ scale: 0.98 }}
-                className="group w-full sm:w-auto flex items-center justify-center space-x-3 bg-gradient-to-r from-emerald-600 to-emerald-500 text-white px-12 py-4 font-medium tracking-wide uppercase hover:from-emerald-500 hover:to-emerald-400 transition-all duration-300 rounded-full shadow-lg shadow-emerald-600/30 hover:shadow-xl hover:shadow-emerald-600/40"
+                disabled={status === "loading"}
+                whileHover={{ scale: status === "loading" ? 1 : 1.02 }}
+                whileTap={{ scale: status === "loading" ? 1 : 0.98 }}
+                className="group w-full sm:w-auto flex items-center justify-center space-x-3 bg-gradient-to-r from-emerald-600 to-emerald-500 text-white px-12 py-4 font-medium tracking-wide uppercase hover:from-emerald-500 hover:to-emerald-400 transition-all duration-300 rounded-full shadow-lg shadow-emerald-600/30 hover:shadow-xl hover:shadow-emerald-600/40 disabled:opacity-50 disabled:cursor-not-allowed"
               >
-                <span>Send Message</span>
+                <span>{status === "loading" ? "Sending..." : "Send Message"}</span>
                 <Send className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
               </motion.button>
             </form>
@@ -231,4 +288,3 @@ const ContactSection = () => {
 }
 
 export default ContactSection
-

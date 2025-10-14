@@ -1,6 +1,6 @@
 "use client"
 import { motion } from "framer-motion"
-import { ArrowRight, ExternalLink, Globe, Mail, ChevronDown } from "lucide-react"
+import { ArrowRight, ExternalLink, Linkedin, Instagram, Twitter, Mail, ChevronDown } from "lucide-react"
 import Image from "next/image"
 import images from "@/public/images"
 import { useState, useEffect } from "react"
@@ -59,8 +59,8 @@ const HeroSection = () => {
                 <span className="block text-emerald-600 flex items-baseline">
                   <span>{typedText}</span>
                   <span
-                    className={`inline-block w-[3px] h-[0.85em] bg-emerald-600 ml-[2px] transition-opacity duration-100 ${showCursor ? 'opacity-100' : 'opacity-0'}`}
-                    style={{ transform: 'translateY(0.1em)' }}
+                    className={`inline-block w-[3px] h-[0.85em] bg-emerald-600 ml-[2px] transition-opacity duration-100 ${showCursor ? "opacity-100" : "opacity-0"}`}
+                    style={{ transform: "translateY(0.1em)" }}
                   ></span>
                 </span>
                 <span className="block">Shaping the</span>
@@ -102,8 +102,6 @@ const HeroSection = () => {
               </button>
             </motion.div>
 
-
-
             {/* Social Links */}
             <motion.div
               initial={{ opacity: 0, y: 30 }}
@@ -114,9 +112,10 @@ const HeroSection = () => {
               <span className="text-white/50 text-xs sm:text-sm font-light tracking-wide uppercase">Connect</span>
               <div className="flex space-x-4">
                 {[
-                  { icon: Globe, label: "LinkedIn", href: "#" },
-                  { icon: Globe, label: "Twitter", href: "#" },
-                  { icon: Mail, label: "Email", href: "#" },
+                  { icon: Linkedin, label: "LinkedIn", href: "https://www.linkedin.com/in/benjamen-oladokun-74b19676/" },
+                  { icon: Instagram, label: "Instagram", href: "#" },
+                  { icon: Twitter, label: "Twitter", href: "#" },
+                  { icon: Mail, label: "Email", href: "mailto:iambenoladokun@gmail.com" },
                 ].map((social) => (
                   <a
                     key={social.label}
@@ -150,8 +149,6 @@ const HeroSection = () => {
               {/* Subtle gradient overlay for depth */}
               <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
             </div>
-
-
           </motion.div>
         </div>
       </div>
