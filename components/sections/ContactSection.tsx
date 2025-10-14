@@ -58,7 +58,7 @@ const ContactSection = () => {
     {
       name: "LinkedIn",
       icon: Linkedin,
-      href: "#",
+      href: "https://www.linkedin.com/in/benjamen-oladokun-74b19676/",
       color: "hover:text-blue-400 hover:border-blue-400",
     },
     {

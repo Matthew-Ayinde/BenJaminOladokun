@@ -1,7 +1,7 @@
 'use client';
 
 import React from 'react';
-import { Globe, Mail } from 'lucide-react';
+import { Globe, Mail, Linkedin, Twitter } from 'lucide-react';
 
 const Footer = () => {
   return (
@@ -20,9 +20,9 @@ const Footer = () => {
             
             <div className="flex space-x-6">
               {[
-                { icon: Globe, label: 'LinkedIn', href: '#' },
-                { icon: Globe, label: 'Twitter', href: '#' },
-                { icon: Mail, label: 'Email', href: 'mailto:' },
+                { icon: Linkedin, label: 'LinkedIn', href: 'https://www.linkedin.com/in/benjamen-oladokun-74b19676/' },
+                { icon: Twitter, label: 'Twitter', href: '#' },
+                { icon: Mail, label: 'Email', href: 'mailto:iambenoladokun@gmail.com' },
               ].map((social) => (
                 <a
                   key={social.label}
