@@ -79,8 +79,8 @@ const AboutSection = () => {
             </motion.div>
           </div>
 
-          {/* Right Content - Image */}
-          <div className="lg:col-span-5">
+          {/* Right Content - Image (hidden on mobile) */}
+          <div className="lg:col-span-5 hidden lg:block">
             <motion.div
               initial={{ opacity: 0, x: 50 }}
               whileInView={{ opacity: 1, x: 0 }}
@@ -94,11 +94,10 @@ const AboutSection = () => {
                   alt="Benjamen Oladokun"
                   fill
                   className="object-cover hover:scale-105 transition-all duration-700"
-                  // className="object-cover grayscale hover:grayscale-0 hover:scale-105 transition-all duration-700"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent" />
               </div>
-              
+               
               {/* Floating Quote */}
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
