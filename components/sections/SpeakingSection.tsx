@@ -18,33 +18,28 @@ const SpeakingSection = () => {
 
   const events = [
     {
-      name: "Art of Technology 5.0",
-      topic: "The Digital Wave: Powering Creative Innovation in Africa",
+      name: "Gitex Global",
+      topic: "Africa's Role in Shaping the Future of Innovation",
       image: images.conference1
     },
     {
-      name: "Harvard Centre for African Studies",
-      topic: "Innovation and Entrepreneurship in Africa",
+      name: "Digital Technology Showcase with Anthony Blinken",
+      topic: "AI & Innovation in the Nigerian Mobility Sector",
       image: images.conference2
     },
     {
-      name: "GITEX Global, Dubai",
-      topic: "Africa's Role in Shaping the Future of Innovation",
+      name: "Art Of Technology",
+      topic: "The Digital Wave: Powering Creative Innovation in Africa",
       image: images.conference3
     },
     {
-      name: "AfroTech Conference",
-      topic: "Innovation, Connection & Black Excellence",
-      image: images.conference4
-    },
-    {
-      name: "Digital Technology Showcase",
-      topic: "AI & Innovation in the Nigerian Mobility Sector",
+      name: "GIBC Forward",
+      topic: "Build the Change You Want to See",
       image: images.conference5
     },
     {
-      name: "Global Impact Business Community",
-      topic: "Build the Change you want to See",
+      name: "Founders Huddle 3.0",
+      topic: "Focus, Vision & Saying No",
       image: images.conference6
     }
   ];

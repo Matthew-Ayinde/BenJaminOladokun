@@ -4,7 +4,7 @@ import { motion } from "framer-motion"
 const StatsSection = () => {
   const stats = [
     { number: "15+", label: "Years of Experience", description: "Building ventures" },
-    { number: "$100M+", label: "Transactions", description: "Via Shekel Mobility" },
+    { number: "$1B+", label: "Transactions", description: "Via Shekel Mobility" },
     { number: "1000+", label: "Entrepreneurs", description: "Empowered globally" },
     { number: "4", label: "Continents", description: "Global impact" },
   ]

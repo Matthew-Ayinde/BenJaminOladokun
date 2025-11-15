@@ -8,28 +8,40 @@ import images from '@/public/images';
 const JourneySection = () => {
   const journeySteps = [
     {
-      year: "Early Years",
-      title: "University Foundations",
-      description: "Sparked entrepreneurial journey at Obafemi Awolowo University with ventures in gaming, hospitality, and mobility, including CampusChow and Snack It Distro.",
+      year: "Early Beginnings",
+      title: "Gitex Global",
+      description: "Speaker on Africa's Role in Shaping the Future of Innovation. Featured at one of the world's largest technology conferences in Dubai, sharing insights on emerging market transformation and digital innovation across the continent.",
       image: images.conference1
     },
     {
-      year: "2010s",
-      title: "Digital Innovation",
-      description: "Co-founded Eazypapers Technologies, Nigeria's first digital fleet documentation platform. Led automation of MMIA Tollgates at Venture Garden Group.",
+      year: "Innovation Era",
+      title: "Digital Technology Showcase with Anthony Blinken",
+      description: "Covered AI & Innovation in the Nigerian Mobility Sector at this prestigious showcase. Demonstrated how technology is reshaping Africa's mobility ecosystem and the impact of fintech on auto dealerships.",
       image: images.conference2
     },
     {
-      year: "Present",
-      title: "Shekel Mobility",
-      description: "Co-founder of Y Combinator-backed fintech startup revolutionizing auto dealerships. Facilitated over $100M in transactions across four continents.",
+      year: "Thought Leadership",
+      title: "Art Of Technology",
+      description: "Speaker on The Digital Wave: Powering Creative Innovation in Africa. Shared insights on how technology and entrepreneurship are converging to create groundbreaking solutions across African markets.",
       image: images.conference3
     },
+    // {
+    //   year: "Collaboration",
+    //   title: "Founders Huddle 3.0",
+    //   description: "Panelist at Founders Huddle 3.0 on Focus, Vision & Saying No. Sharing practical wisdom on entrepreneurial clarity, strategic decision-making, and the power of saying no to distractions.",
+    //   image: images.conference6
+    // },
     {
-      year: "Impact",
-      title: "Global Leadership",
-      description: "Community Leader of GIBC, Forbes Business Council Member, Harambean Fellow, and Global Entrepreneurship Award recipient.",
-      image: images.conference4
+      year: "Community Impact",
+      title: "GIBC Forward",
+      description: "Host at The Impact Conference on Build the Change You Want to See. As Community Leader of GIBC, equipping faith-driven entrepreneurs with clarity, networks, and tools to build businesses that matter.",
+      image: images.conference5
+    },
+    {
+      year: "Global Platforms",
+      title: "Founders Huddle 3.0",
+      description: "Panelist on Focus, Vision & Saying No. Sharing practical wisdom on entrepreneurial clarity, strategic decision-making, and the power of saying no to distractions that derail vision and purpose.",
+      image: images.conference6
     }
   ];
 

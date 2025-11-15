@@ -9,7 +9,7 @@ const AchievementsSection = () => {
       category: "Entrepreneurial Ventures",
       items: [
         "Co-founder of Shekel Mobility (Y Combinator-backed)",
-        "Facilitated over $100 million in auto transactions",
+        "Facilitated over $1B+ in auto transactions",
         "Founded CampusChow and Snack It Distro",
         "Co-founded Eazypapers Technologies",
         "Head of Innovation at Venture Garden Group"
